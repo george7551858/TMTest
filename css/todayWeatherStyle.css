@@ -1,0 +1,27 @@
+h1 {
+    font-size: 16px;
+    font-family: Arial;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #000;
+}
+.clearfix {
+    overflow: auto;
+}
+#error-msg {
+    display: none;/**/
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #FF6666;
+    background-color: #FFEDED;
+}
+#weather-icon {
+    background-image: url('../img/icons.png');
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.sprite-cloud  {background-position: -72px -375px; }
+.sprite-rain  {background-position: -287px -375px;}
+.sprite-clear  {background-position: -72px -15px;}
+.sprite-na  {background-position: -144px -520px;}
