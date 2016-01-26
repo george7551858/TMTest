@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<title></title>
+<head>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+}
+.nav {
+	position: absolute;
+	left: 0px;
+	width: 20%;
+}
+.nav > ul {
+	font-size: 12px;
+	list-style: none;
+	margin: 5px;
+	padding: 0;
+}
+.nav li {
+	padding: 5px 20px;
+	border: 1px solid #c0c0c0;
+	border-bottom: none;/**/
+}
+.nav li:last-child {
+	border-bottom: 1px solid #c0c0c0;
+}
+.nav li a{
+	text-decoration: none;
+}
+.nav li:hover {
+	font-weight: bold;
+	cursor: pointer;
+	border: 1px solid #2a9fcd;
+	background-color: #E7EBFF
+}
+#content {
+	margin-left: 20%;
+}
+
+</style>
+</head>
+<body>
+<div class="nav">
+	<ul>
+		<li><a href="./template/dataAnalysis.html" target="content_frame">Data Analysis</a></li>
+		<li><a href="./template/todayWeather.html" target="content_frame">Today's Weather</a></li>
+	</ul>
+</div>
+<div id="content">
+<iframe src="" name="content_frame" frameborder="0" width="100%" height="640"></iframe>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+$('.nav').on('click', 'li', function(event) {
+	event.preventDefault();
+	var link = $(this).find('a').attr('href');
+	$("[name=content_frame]").attr('src', link);
+});
+</script>
+</body>
+</html>
