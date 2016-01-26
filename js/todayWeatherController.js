@@ -21,10 +21,11 @@ function show_weather (resp) {
 
     $('#city-name').text(resp.name);
 
-    $('#humidity').text(resp.main.humidity);
-    $('#temp_min').text(resp.main.temp_min);
-    $('#temp_max').text(resp.main.temp_max);
-    $('#temp').text(resp.main.temp);
+    for (var item in resp.main) {
+        if (resp.main.hasOwnProperty(item)) {
+            $('#'+item).text(resp.main[item]);
+        }
+    }
 
     var class_name = get_icon_name(resp.weather[0].description);
     
