@@ -1,4 +1,4 @@
-window.onload = function () {
+function page_init() {
     var container = document.getElementById('visualization');
     var items = [
         {x: '2007', y: 106898, group: 0},
@@ -22,4 +22,4 @@ window.onload = function () {
         end: '2013'
     };
     var graph2d = new vis.Graph2d(container, dataset, options);
-};
+}

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<meta charset="utf-8">
-	<title></title>
 <head>
+<meta charset="utf-8">
+<title></title>
 <style>
 body {
 	margin: 0;
@@ -46,19 +46,18 @@ body {
 <body>
 <div class="nav">
 	<ul>
-		<li><a href="./template/dataAnalysis.html" target="content_frame">Data Analysis</a></li>
-		<li><a href="./template/todayWeather.html" target="content_frame">Today's Weather</a></li>
+		<li><a href="./template/dataAnalysis.html">Data Analysis</a></li>
+		<li><a href="./template/todayWeather.html">Today's Weather</a></li>
 	</ul>
 </div>
 <div id="content">
-<iframe src="" name="content_frame" frameborder="0" width="100%" height="640"></iframe>
 </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script>
 $('.nav').on('click', 'li', function(event) {
 	event.preventDefault();
 	var link = $(this).find('a').attr('href');
-	$("[name=content_frame]").attr('src', link);
+	$('#content').load(link);
 });
 </script>
 </body>
