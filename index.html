@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9"> 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TMTest</title>
+<!--[if lte IE 8]><script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/excanvas.min.js"></script><![endif]-->
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<!--[if lte IE 9]><script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script><![endif]-->
 <style>
 body {
 	margin: 0;
@@ -72,7 +76,6 @@ h1 {
 </div>
 <div id="content">
 </div>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script>
 $('.nav').on('click', 'li', function(event) {
 	event.preventDefault();
