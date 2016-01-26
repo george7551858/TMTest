@@ -11,6 +11,9 @@ h1 {
     border: 1px solid #FF6666;
     background-color: #FFEDED;
 }
+#loading {
+    display: none;
+}
 #weather-icon {
     background-image: url('../img/icons.png');
     background-repeat: no-repeat;

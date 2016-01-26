@@ -14,6 +14,7 @@ function get_icon_name (text) {
 
 function show_error_msg (msg) {
     $('#error-msg').text(msg).show();
+    $('#loading').hide();
 }
 
 function show_weather (resp) {
@@ -42,6 +43,7 @@ $('#ask-weather').on('submit', function(event) {
     var country = $('[name=country]').val();
     var query = city+","+country;
     $('#error-msg').hide();
+    $('#loading').show();
 
     $.get( 'http://api.openweathermap.org/data/2.5/weather?q='+query+'&APPID='+APPID+'&units=metric', function(resp){
         
@@ -51,5 +53,6 @@ $('#ask-weather').on('submit', function(event) {
         }
 
         show_weather(resp);
+        $('#loading').hide();
     });
 });
