@@ -1,25 +1,29 @@
 <link rel="stylesheet" href="../css/todayWeatherStyle.css">
 <div>
-<h1>Today's Weather</h1>
-<div id="error-msg"></div>
-<form action="#" id="ask-weather">
-	<lable>City: <input type="text" name="city" placeholder="Taipei"/></lable>
-	<lable>Country: <input type="text" name="country" placeholder="TW"/></lable>
-	<button type="submit">Search</button>
-</form>
-<h2 id="name"></h2>
-<div class="clearfix">
-	<div id="weather-icon"></div>
-	<div class="weather-text">
-		<div id="weather-main"></div>
-		<div id="weather-description"></div>
+	<h1>Today's Weather</h1>
+	<div id="error-msg"></div>
+	<form action="#" id="ask-weather">
+		<lable>City: <input type="text" name="city" value="Taipei"/></lable>
+		<lable>Country: <input type="text" name="country" value="TW"/></lable>
+		<button type="submit">Search</button>
+	</form>
+	<h2 id="city-name"></h2>
+	<div class="weather-wrapper">
+		<div id="weather-icon"></div>
+		<div class="weather-text">
+			<div>&mdash; <span id="weather-main"></span> &mdash;</div>
+			<span id="weather-description"></span>
+		</div>
+		<div class="weather-item">
+			<p class="temp_min_item">Low <span id="temp_min"></span> °C</p>
+			<p class="temp_item"><span id="temp"></span>°C</p>
+			<p class="temp_max_item">Hight <span id="temp_max"></span>°C</p>
+			<br>
+			<p class="humidity_item">Humidity: <span id="humidity"></span>%</p>
+		</div>
 	</div>
 </div>
-<dl>
-	<dt>Temperature</dt>
-	<dd id="temp"></dd>
-	<dt>Humidity</dt>
-	<dd id="humidity"></dd>
-</dl>
-</div>
 <script src="../js/todayWeatherController.js"></script>
+<script>
+	$('#ask-weather').submit();
+</script>

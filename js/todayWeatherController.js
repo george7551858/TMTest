@@ -16,6 +16,24 @@ function show_error_msg (msg) {
     $('#error-msg').text(msg).show();
 }
 
+function show_weather (resp) {
+    $('.weather-wrapper').show();
+
+    $('#city-name').text(resp.name);
+
+    $('#humidity').text(resp.main.humidity);
+    $('#temp_min').text(resp.main.temp_min);
+    $('#temp_max').text(resp.main.temp_max);
+    $('#temp').text(resp.main.temp);
+
+    var class_name = get_icon_name(resp.weather[0].description);
+    
+    $('#weather-icon').attr('class','sprite-'+class_name);
+
+    $('#weather-main').text(resp.weather[0].main);
+    $('#weather-description').text(resp.weather[0].description);
+}
+
 
 $('#ask-weather').on('submit', function(event) {
     event.preventDefault();
@@ -31,16 +49,7 @@ $('#ask-weather').on('submit', function(event) {
             show_error_msg(resp.message);
             return;
         }
-        $('#name').text(resp.name);
 
-        $('#humidity').text(resp.main.humidity+'%');
-        $('#temp').text(resp.main.temp_min+'°C ~ '+resp.main.temp_max+'°C');
-
-        var class_name = get_icon_name(resp.weather[0].description);
-        
-        $('#weather-icon').attr('class','sprite-'+class_name);
-
-        $('#weather-main').text(resp.weather[0].main);
-        $('#weather-description').text(resp.weather[0].description);
+        show_weather(resp);
     });
 });
