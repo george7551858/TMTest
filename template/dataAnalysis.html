@@ -1,11 +1,16 @@
-<div>
-<link rel="stylesheet" href="../css/dataAnalysisStyle.css">
-<script src="../js/dataAnalysisController.js"></script>
 <link rel="stylesheet" href="../css/dataAnalysisStyle.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/vis/4.12.0/vis.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/vis/4.12.0/vis.min.js"></script>
-
+<div>
 <h1>Data Analysis</h1>
 <div id="visualization"></div>
 </div>
 <script src="../js/dataAnalysisController.js"></script>
+<script>
+var url = "//cdnjs.cloudflare.com/ajax/libs/vis/4.12.0/vis.min.js";
+
+$.getScript( url, function(data, textStatus, jqxhr) {
+    if(textStatus === 'success' ) {
+        page_init();
+    }
+});
+</script>
