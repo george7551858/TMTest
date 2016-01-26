@@ -8,7 +8,8 @@
 <script src="../js/dataAnalysisController.js"></script>
 <script>
 var url = "//cdnjs.cloudflare.com/ajax/libs/dygraph/1.1.1/dygraph-combined.js";
-
+// Since using jQuery.load() to load this page,
+// we need to ensure script run after dygraph.js loaded.
 $.getScript( url, function(data, textStatus, jqxhr) {
     if(textStatus === 'success' ) {
         page_init();
