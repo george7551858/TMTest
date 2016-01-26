@@ -2,7 +2,7 @@ var APPID="8307197f7df3592b62a58d13443b2185";
 
 
 function get_icon_name (text) {
-    var weather_icon_list = ['cloud', 'rain', 'clear'];
+    var weather_icon_list = ['cloud', 'rain', 'clear', 'snow'];
     for (var i = weather_icon_list.length - 1; i >= 0; i--) {
         var icon_name = weather_icon_list[i];
         if (text.search(icon_name) >= 0) {
@@ -44,8 +44,7 @@ $('#ask-weather').on('submit', function(event) {
     $('#error-msg').hide();
 
     $.get( 'http://api.openweathermap.org/data/2.5/weather?q='+query+'&APPID='+APPID+'&units=metric', function(resp){
-        console.log(resp);
-
+        
         if (resp.cod !== 200) {
             show_error_msg(resp.message);
             return;

@@ -48,6 +48,7 @@ h1 {
     font-size: 15px;
 }
 .sprite-cloud  {background-position: -72px -375px; }
-.sprite-rain  {background-position: -287px -375px;}
+.sprite-rain  {background-position: -288px -375px;}
 .sprite-clear  {background-position: -72px -15px;}
+.sprite-snow  {background-position: -144px -445px;}
 .sprite-na  {background-position: -144px -520px;}
