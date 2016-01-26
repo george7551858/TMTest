@@ -10,83 +10,84 @@
 <!--[if lte IE 9]><script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script><![endif]-->
 <style>
 body {
-	margin: 0;
-	padding: 0;
-	font-family: Arial;
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
 }
 h1 {
-	margin: 0 0 10px;
-	padding: 15px 5px 4px;
-	font-size: 16px;
-	font-family: Arial;
-	border-bottom: 1px solid #000;
+    margin: 0 0 10px;
+    padding: 15px 5px 4px;
+    font-size: 16px;
+    font-family: Arial;
+    border-bottom: 1px solid #000;
 }
 
 .nav {
-	position: absolute;
-	left: 0px;
-	width: 20%;
+    position: absolute;
+    left: 0px;
+    width: 20%;
 }
 .nav > ul {
-	font-size: 12px;
-	list-style: none;
-	margin: 5px;
-	padding: 0;
+    font-size: 12px;
+    list-style: none;
+    margin: 5px;
+    padding: 0;
 }
 .nav li {
-	padding: 5px 20px;
-	border: 1px solid #c0c0c0;
-	border-bottom: none;/**/
+    padding: 5px 20px;
+    border: 1px solid #c0c0c0;
+    border-bottom: none;
+    *border-bottom: 1px solid #c0c0c0;/* IE CSS hack*/
 }
 .nav li:last-child {
-	border-bottom: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0;
 }
 .nav li a{
-	text-decoration: none;
+    text-decoration: none;
 }
 .nav li:hover {
-	font-weight: bold;
-	cursor: pointer;
-	border: 1px solid #2a9fcd;
-	background-color: #E7EBFF
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #2a9fcd;
+    background-color: #E7EBFF
 }
 #content {
-	margin-left: 20%;
-	padding: 5px;
+    margin-left: 20%;
+    padding: 5px;
 }
 
 @media (max-width:719px) {
-	.nav {
-		position: relative;
-		width: 100%;
-	}
-	#content {
-		margin-left: 0;
-	}
+    .nav {
+        position: relative;
+        width: 100%;
+    }
+    #content {
+        margin-left: 0;
+    }
 }
 
 </style>
 </head>
 <body>
 <div class="nav">
-	<ul>
-		<li><a href="template/dataAnalysis.html">Data Analysis</a></li>
-		<li><a href="template/todayWeather.html">Today's Weather</a></li>
-	</ul>
+    <ul>
+        <li><a href="template/dataAnalysis.html">Data Analysis</a></li>
+        <li><a href="template/todayWeather.html">Today's Weather</a></li>
+    </ul>
 </div>
 <div id="content">
 </div>
 <script>
 $('.nav').on('click', 'li', function(event) {
-	event.preventDefault();
-	var link = $(this).find('a').attr('href');
-	$('#content').load(link);
-	window.history.pushState(null, null, '#'+link.split('/')[1]);
+    event.preventDefault();
+    var link = $(this).find('a').attr('href');
+    $('#content').load(link);
+    window.history.pushState(null, null, '#'+link.split('/')[1]);
 });
 
 $(window).on('hashchange', function(event) {
-	var page = window.location.hash.substring(1);
-	$('#content').load('template/'+page);
+    var page = window.location.hash.substring(1);
+    $('#content').load('template/'+page);
 });
 
 </script>
