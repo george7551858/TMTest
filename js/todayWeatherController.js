@@ -28,8 +28,8 @@ function show_weather (resp) {
         }
     }
 
-    var class_name = get_icon_name(resp.weather[0].description);
-    
+    var class_name = get_icon_name(resp.weather[0].description);    
+    // TODO: use resp.weather.icon
     $('#weather-icon').attr('class','sprite-'+class_name);
 
     $('#weather-main').text(resp.weather[0].main);
