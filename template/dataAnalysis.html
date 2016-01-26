@@ -4,6 +4,19 @@
     <div class="vis-wrapper">
         <div id="visualization"></div>
     </div>
+    <form action="#"id="data-form">
+        <textarea id="data-text" cols="30" rows="10">
+Year,Men,Female
+2007,106898,97516
+2008,103937,94796
+2009,99492,91818
+2010,87213,79673
+2011,101943,94684
+2012,118848,110633
+2013,103120,95993
+        </textarea>
+        <button type="submit">Submit</button>
+    </form>
 </div>
 <script src="../js/dataAnalysisController.js"></script>
 <script>
@@ -12,7 +25,7 @@ var url = "//cdnjs.cloudflare.com/ajax/libs/dygraph/1.1.1/dygraph-combined.js";
 // we need to ensure script run after dygraph.js loaded.
 $.getScript( url, function(data, textStatus, jqxhr) {
     if(textStatus === 'success' ) {
-        page_init();
+        init_dygraph();
     }
 });
 </script>
