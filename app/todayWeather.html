@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="styles/todayWeatherStyle.css">
+<div>
+    <h1>Today's Weather</h1>
+    <div id="error-msg"></div>
+    <form action="#" id="ask-weather">
+        <lable>City: <input type="text" name="city" value="Taipei"/></lable>
+        <lable>Country: <input type="text" name="country" value="TW"/></lable>
+        <button type="submit">Search</button>
+        <img id="loading" src="images/ajax-loader.gif" alt="loading...">
+    </form>
+    <h2 id="city-name"></h2>
+    <div class="weather-wrapper">
+        <div id="weather-icon"></div>
+        <div class="weather-text">
+            <div>&mdash; <span id="weather-main"></span> &mdash;</div>
+            <span id="weather-description"></span>
+        </div>
+        <div class="weather-item">
+            <p class="temp_min_item">Low <span id="temp_min"></span> °C</p>
+            <p class="temp_item"><span id="temp"></span>°C</p>
+            <p class="temp_max_item">Hight <span id="temp_max"></span>°C</p>
+            <br>
+            <p class="humidity_item">Humidity: <span id="humidity"></span> %</p>
+            <br>
+            <p class="pressure_item">Pressure: <span id="pressure"></span> hPa</p>
+        </div>
+    </div>
+</div>
+<script src="scripts/todayWeatherController.js"></script>
+<script>
+    $('#ask-weather').submit();
+</script>
