@@ -1,15 +1,17 @@
+'use strict';
 
-function init_dygraph() {
+function initDygraph() {
     var g = new Dygraph(
         // containing div
-        document.getElementById("visualization"),
-        $("#data-text").val()
+        document.getElementById('visualization'),
+        $('#data-text').val()
     );
 
-    $("#data-form").on('submit', function(event) {
+    $('#data-form').on('submit', function(event) {
         event.preventDefault();
-        var data = $("#data-text").val();
+        var data = $('#data-text').val();
         g.updateOptions( { 'file': data } );
     });
 }
 
+initDygraph();
