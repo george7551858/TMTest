@@ -58,3 +58,5 @@ $('#ask-weather').on('submit', function(event) {
         $('#loading').hide();
     });
 });
+
+$('#ask-weather').submit();
