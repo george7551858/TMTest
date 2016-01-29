@@ -6,7 +6,8 @@
     "modernizr": "~2.8.1",
     "dygraphs": "^1.1.1",
     "ExplorerCanvas": "excanvas#*",
-    "jQuery-ajaxTransport-XDomainRequest": "jQuery.XDomainRequest#^1.0.4"
+    "jQuery-ajaxTransport-XDomainRequest": "jQuery.XDomainRequest#^1.0.4",
+    "riot": "^2.3.13"
   },
   "devDependencies": {
     "chai": "^3.4.2",

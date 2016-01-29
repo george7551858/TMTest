@@ -79,11 +79,14 @@ gulp.task('fonts', () => {
 });
 
 gulp.task('riot', () => {
-  return gulp.src('app/*.tag')
+  return gulp.src('app/tags/*.tag')
+    .pipe($.plumber())
     .pipe(riot({
 
     }))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('.tmp/tags'))
+    .pipe(gulp.dest('dist/tags'))
+    .pipe(reload({stream: true}));
 });
 
 gulp.task('extras', () => {
@@ -97,7 +100,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
+gulp.task('serve', ['styles', 'scripts', 'fonts', 'riot'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -118,6 +121,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 
   gulp.watch('app/styles/**/*.css', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
+  gulp.watch('app/tags/**/*.tag', ['riot']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });

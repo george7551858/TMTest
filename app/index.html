@@ -28,14 +28,7 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="nav">
-        <ul>
-            <li><a href="dataAnalysis.html">Data Analysis</a></li>
-            <li><a href="todayWeather.html">Today's Weather</a></li>
-        </ul>
-    </div>
-    <div id="content">
-    </div>
+    <app></app>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -51,6 +44,7 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/dygraphs/dygraph-combined.js"></script>
+    <script src="/bower_components/riot/riot.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -69,5 +63,16 @@
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+
+    <!-- riot tags -->
+    <script src="tags/app.js"></script>
+    <script src="tags/data-analysis.js"></script>
+    <script src="tags/today-weather.js"></script>
+
+    <!-- mount this app -->
+    <script>
+      riot.mount('app')
+      riot.route.start(true)
+    </script>
   </body>
 </html>
