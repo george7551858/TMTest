@@ -7,7 +7,7 @@
 
   <article>
     <h1>{ page.title || 'Not found' }</h1>
-    <p id="content">{ page.body || 'Specified id is not found.' }</p>
+    <div id="content">{ page.body || 'Specified id is not found.' }</div>
   </article>
 
   <script>
@@ -20,7 +20,7 @@
 
     riot.route(function(id) {
       self.page = self.data.filter(function(r) { return r.id == id })[0] || {}
-      riot.mount('#content',self.page.body)
+      riot.mount('div#content',self.page.body)
       self.update()
     })
   </script>

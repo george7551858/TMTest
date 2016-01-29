@@ -1,30 +1,90 @@
 <today-weather>
   <div id="error-msg"></div>
-  <form action="#" id="ask-weather">
+  <form  onsubmit="{ getWeather }" action="#">
     <lable>City: <input type="text" name="city" value="Taipei"/></lable>
     <lable>Country: <input type="text" name="country" value="TW"/></lable>
     <button type="submit">Search</button>
     <img id="loading" src="images/ajax-loader.gif" alt="loading...">
   </form>
-  <h2 id="city-name"></h2>
-  <div class="weather-wrapper">
-    <div id="weather-icon"></div>
+  <h2>{ city_name }</h2>
+  <div class="weather-wrapper" show={ city_name }>
+    <div id="weather-icon" class={ iconClassName }></div>
     <div class="weather-text">
-      <div>&mdash; <span id="weather-main"></span> &mdash;</div>
-      <span id="weather-description"></span>
+      <div>&mdash; <span id="weather-main">{ weather_main }</span> &mdash;</div>
+      <span id="weather-description">{ weather_description }</span>
     </div>
     <div class="weather-item">
-      <p class="temp_min_item">Low <span id="temp_min"></span> °C</p>
-      <p class="temp_item"><span id="temp"></span>°C</p>
-      <p class="temp_max_item">Hight <span id="temp_max"></span>°C</p>
+      <p class="temp_min_item">Low <span>{ temp_min }</span> °C</p>
+      <p class="temp_item"><span>{ temp }</span>°C</p>
+      <p class="temp_max_item">Hight <span>{ temp_max }</span>°C</p>
       <br>
-      <p class="humidity_item">Humidity: <span id="humidity"></span> %</p>
+      <p class="humidity_item">Humidity: <span>{ humidity }</span> %</p>
       <br>
-      <p class="pressure_item">Pressure: <span id="pressure"></span> hPa</p>
+      <p class="pressure_item">Pressure: <span>{ pressure }</span> hPa</p>
     </div>
   </div>
 
   <script>
+
+    this.APPID = '8307197f7df3592b62a58d13443b2185'
+
+    getIconName(text) {
+        var weatherIconList = ['cloud', 'rain', 'clear', 'snow'];
+        for (var i = weatherIconList.length - 1; i >= 0; i--) {
+            var iconName = weatherIconList[i];
+            if (text.search(iconName) >= 0) {
+                return iconName;
+            }
+        }
+        return 'na';
+    }
+
+    setWeather(resp) {
+
+      this.city_name = resp.name
+
+      for (var item in resp.main) {
+          if (resp.main.hasOwnProperty(item)) {
+              this[item] = resp.main[item]
+          }
+      }
+
+      this.iconClassName = 'sprite-' + this.getIconName(resp.weather[0].description)
+      // TODO: use resp.weather.icon
+
+      this.weather_main = resp.weather[0].main
+      this.weather_description = resp.weather[0].description
+    }
+
+    getWeather() {
+
+      $('#error-msg').hide();
+      $('#loading').show();
+
+      var apiUrl = 'http://api.openweathermap.org/data/2.5/weather?'
+      var query = this.city.value + ',' + this.country.value;
+
+      var self = this;
+
+      $.get(apiUrl + 'q=' + query + '&APPID=' + this.APPID + '&units=metric', function(resp) {
+
+          $('#loading').hide();
+
+          if (resp.cod !== 200) {
+              $('#error-msg').text(resp.message).show();
+              return;
+          }
+
+          self.setWeather(resp);
+          self.update()
+      });
+    }
+
+    this.on('mount', function() {
+      this.getWeather()
+    })
+
+
   </script>
 
   <style scoped>
@@ -46,7 +106,6 @@
         float: left;
     }
     .weather-wrapper {
-        display: none;
         width: 240px;
         margin: 0 30px;
         overflow: auto;
