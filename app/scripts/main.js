@@ -1,15 +1,9 @@
 'use strict';
 
-
-$('.nav').on('click', 'li', function(event) {
+$('app').on('click', 'li', function(event) {
     event.preventDefault();
-    var link = $(this).find('a').attr('href');
-    $('#content').load(link);
-    window.history.pushState(null, null, '#' + link);
-});
-
-$(window).on('hashchange', function() {
-    var page = window.location.hash.substring(1);
-    $('#content').load(page);
+    event.stopPropagation();
+    var link = $(this).find('a').attr('href').substring(1);
+    riot.route(link);
 });
 
