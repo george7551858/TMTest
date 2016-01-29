@@ -16,7 +16,6 @@ function getIconName(text) {
 
 function showErrorMsg(msg) {
     $('#error-msg').text(msg).show();
-    $('#loading').hide();
 }
 
 function showWeather(resp) {
@@ -49,13 +48,14 @@ $('#ask-weather').on('submit', function(event) {
 
     $.get('http://api.openweathermap.org/data/2.5/weather?q=' + query + '&APPID=' + APPID + '&units=metric', function(resp) {
 
+        $('#loading').hide();
+
         if (resp.cod !== 200) {
             showErrorMsg(resp.message);
             return;
         }
 
         showWeather(resp);
-        $('#loading').hide();
     });
 });
 
