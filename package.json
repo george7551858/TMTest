@@ -19,6 +19,7 @@
     "gulp-imagemin": "^2.2.1",
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.0.1",
+    "gulp-riot": "^0.4.4",
     "gulp-size": "^1.2.1",
     "gulp-sourcemaps": "^1.5.0",
     "gulp-stylus": "^2.2.0",
@@ -40,9 +41,9 @@
       ]
     },
     "globals": {
-        "$": true,
-        "jQuery": false,
-        "Dygraph": false
+      "$": true,
+      "jQuery": false,
+      "Dygraph": false
     }
   }
 }

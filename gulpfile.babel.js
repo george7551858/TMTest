@@ -3,6 +3,7 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
+import riot from 'gulp-riot';
 import {stream as wiredep} from 'wiredep';
 
 const $ = gulpLoadPlugins();
@@ -75,6 +76,14 @@ gulp.task('fonts', () => {
     .concat('app/fonts/**/*'))
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/fonts'));
+});
+
+gulp.task('riot', () => {
+  return gulp.src('app/*.tag')
+    .pipe(riot({
+
+    }))
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('extras', () => {
